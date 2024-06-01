@@ -7,6 +7,16 @@ import SequelizeStore from "connect-session-sequelize";
 import UserRoute from "./routes/UserRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
+import CustomerRoute from "./routes/CustomerRoute.js";
+import InvoiceRoute from "./routes/InvoiceRoute.js";
+import OrderRoute from "./routes/OrderRoute.js";
+import SuratJalanRoute from "./routes/SuratJalanRoute.js";
+import DetailSuratJalanRoute from "./routes/DetailSuratJalanRoute.js";
+import DetailOrderRoute from "./routes/DetailOrderRoute.js";
+import DetailInvoiceRoute from "./routes/DetailInvoiceRoute.js";
+import defineAssociations from "./models/associations.js";
+
+// import bodyParser from 'body-parser';
 dotenv.config();
 
 const app = express();
@@ -14,34 +24,50 @@ const app = express();
 const sessionStore = SequelizeStore(session.Store);
 
 const store = new sessionStore({
-    db: db
+  db: db,
 });
 
-// (async()=>{
-//     await db.sync();
-// })();
+(async () => {
+  await db.sync();
+})();
 
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: 'auto'
-    }
-}));
+      secure: "auto",
+    },
+  })
+);
 
-app.use(cors({
+app.use(
+  cors({
     credentials: true,
-    origin: 'http://localhost:3000'
-}));
+    origin: "http://localhost:3000",
+  })
+);
+
 app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
+app.use(InvoiceRoute);
+app.use(OrderRoute);
+app.use(SuratJalanRoute);
+app.use(DetailSuratJalanRoute);
+app.use(CustomerRoute);
 app.use(AuthRoute);
+app.use(DetailOrderRoute);
+app.use(DetailInvoiceRoute);
 
-// store.sync();
+defineAssociations();
 
-app.listen(process.env.APP_PORT, ()=> {
-    console.log('Server up and running...');
+store.sync();
+
+// app.use(bodyParser.json());
+
+app.listen(process.env.APP_PORT, () => {
+  console.log("Server up and running...", process.env.APP_PORT);
 });

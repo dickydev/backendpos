@@ -1,0 +1,169 @@
+POST http://localhost:5000/users/
+Content-Type: application/json
+
+{
+    "name" : "fernando",
+    "email" : "fernando@gmail.com",
+    "password" : "123",
+    "confPassword" : "123",
+    "role" : "user"
+}
+
+###
+POST http://localhost:5000/users/
+Content-Type: application/json
+
+{
+    "name" : "ucup",
+    "email" : "ucup@gmail.com",
+    "password" : "123",
+    "confPassword" : "123",
+    "role" : "master"
+}
+
+###
+POST http://localhost:5000/products/
+Content-Type: application/json
+
+{
+    "kodeProduct" : "KD001",
+    "namaProduct" : "Plastiks",
+    "harga" : 10000,
+    "jumlah" : 120
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "dicky@gmail.com",
+    "password" : "123"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "fernando@gmail.com",
+    "password" : "123"
+}
+
+###
+GET http://localhost:5000/me
+Content-Type: application/json
+{
+    "email" : "dicky@gmail.com",
+    "password" : "123"
+}
+
+###
+DELETE http://localhost:5000/logout
+
+###
+GET http://localhost:5000/products/3124bb6b-6d5a-44c0-bdee-b1ef210d9f46
+
+###
+POST http://localhost:5000/suratjalan/
+Content-Type: application/json
+
+{
+    "tanggal" : "2024-08-12",
+    "noSuratJalan" : "SJ001",
+    "kodeProduct" : "KD001",
+    "namaProduct" : "Plastiks",
+    "jumlahProduct" : 12,
+    "hargaSatuan" : 12000,
+    "totalHarga" : 120000,
+    "noMobil" : "1231",
+    "namaSopir" : "Dicky",
+    "keterangan" : "Good"
+}
+###
+GET  http://localhost:5000/invoice/
+###
+POST http://localhost:5000/invoice/
+Content-Type: application/json
+
+{
+    "namaCust" : "Dicky",
+    "noInvoice" : "IN001",
+    "tglInvoice" : "12-12-2023",
+    "noSJ" : "SJ001",
+    "noKTP" : "1212121212121",
+    "tglSJ" : "12-12-2023",
+    "kodeProduct" : "KD0001",
+    "jumlah" : 12,
+    "harga" : 12000,
+    "keterangan" : "Good"
+}
+
+###
+POST http://localhost:5000/customers/
+Content-Type: application/json
+
+{
+    "kodeCust" : "CS001",
+    "nama" : "Nasya"
+}
+###
+POST http://localhost:5000/customers/
+Content-Type: application/json
+
+{
+    "kodeCust" : "CS001",
+    "nama" : "Nasya"
+}
+
+###
+POST http://localhost:5000/order/
+Content-Type: application/json
+
+{
+    "tglOrder" : "12-12-2023",
+    "noOrder" : "ORD002",
+    "kodeAgen" : "AG002",
+    "namaAgen" : "Diky",
+    "jumlah" : 120,
+    "tglKirim" : "12-12-2023",
+    "keterangan" : "Good",
+    "pembayaran" : "cash"
+}
+
+
+###
+POST http://localhost:5000/suratjalan/
+Content-Type: application/json
+
+{
+    "tanggal" : "12-12-2023",
+    "noSuratJalan" : "SJ001",
+    "noMobil" : "LIDAD",
+    "namaSopir" : "Ucup",
+    "keterangan" : "adh",
+    "kodeProduct" : "KD002"
+}
+###
+POST http://localhost:5000/detailsuratjalan/
+Content-Type: application/json
+
+{
+    "idSuratJalan": "721b90b3-2174-4b51-899a-f3b41280f35d",
+    "kodeProduct" : "KD001",
+    "namaProduct" : "Celana",
+    "jumlahProduct" : 12,
+    "hargaSatuan" : 120
+}
+
+###
+POST http://localhost:5000/detailsuratjalan/
+Content-Type: application/json
+
+{
+    "idSuratJalan": "721b90b3-2174-4b51-899a-f3b41280f35d",
+    "kodeProduct" : "KD002",
+    "namaProduct" : "Baju",
+    "jumlahProduct" : 12,
+    "hargaSatuan" : 120
+}
